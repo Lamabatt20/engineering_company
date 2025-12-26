@@ -7,86 +7,93 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
-model user {
-  id               Int       @id @default(autoincrement())
-  username         String    @unique
-  email            String    @unique
-  password         String
-  role             String    @default("customer")
-  isVerified       Boolean   @default(true)
-  customer         Customer?
+////////////////////////
+// COMPANY INFO
+////////////////////////
+model CompanyInfo {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  vision      String
+  mission     String
+  email       String
+  phone       String
+  address     String
 }
 
-model Customer {
-  id             Int        @id @default(autoincrement())
-  name           String
-  address        String
-  phone          String
-  email          String     @unique
-  userId         Int?       @unique
-  city           String     @default("")
-  country_region String     @default("")
-  postal_code    String     @default("")
-  cartItems      CartItem[]
-  user           user?      @relation(fields: [userId], references: [id])
-  orders         Order[]
+////////////////////////
+// SERVICES
+////////////////////////
+model Service {
+  id          Int       @id @default(autoincrement())
+  title       String
+  description String
+  icon        String?
+  projects    Project[]
 }
 
-model Product {
-  id              Int        @id @default(autoincrement())
-  name            String     
-  name_ar         String     @default("")
-  description     String     
-  description_ar  String     @default("")
-  price           Int
-  images          String[]                
-  available       String?
-  createdAt       DateTime   @default(now())
-  cartItems       CartItem[]
-  orderItems      OrderItem[]
-  variants        ProductVariant[]
-
-}
-model ProductVariant {
-  id          Int      @id @default(autoincrement())
-  product     Product  @relation(fields: [productId], references: [id])
-  productId   Int
-  color       String?  
-  size        String   
-  stock       Int      @default(0)  
-  images      String[] @default([]) 
+////////////////////////
+// PROJECTS
+////////////////////////
+model Project {
+  id          Int            @id @default(autoincrement())
+  title       String
+  description String
+  year        Int
+  clientName  String?
+  serviceId   Int
+  service     Service        @relation(fields: [serviceId], references: [id])
+  images      ProjectImage[]
+  createdAt   DateTime       @default(now())
 }
 
-model Order {
-  id         Int         @id @default(autoincrement())
-  status     String      @default("pending")
-  subtotal   Int
-  shipping   Int
-  createdAt  DateTime    @default(now())
-  customerId Int
-  customer   Customer    @relation(fields: [customerId], references: [id])
-  items      OrderItem[]
-}
-
-model OrderItem {
+////////////////////////
+// PROJECT IMAGES
+////////////////////////
+model ProjectImage {
   id        Int     @id @default(autoincrement())
-  quantity  Int
-  orderId   Int
-  productId Int
-  color     String?
-  size      String?
-  order     Order   @relation(fields: [orderId], references: [id])
-  product   Product @relation(fields: [productId], references: [id])
+  imageUrl  String
+  projectId Int
+  project   Project @relation(fields: [projectId], references: [id])
 }
 
-model CartItem {
-  id         Int      @id @default(autoincrement())
-  productId  Int
-  customerId Int
-  quantity   Int
-  color      String?
-  size       String?
-  customer   Customer @relation(fields: [customerId], references: [id])
-  product    Product  @relation(fields: [productId], references: [id])
+////////////////////////
+// PARTNERS (LOGOS)
+////////////////////////
+model Partner {
+  id      Int    @id @default(autoincrement())
+  name    String
+  logoUrl String
+}
+
+////////////////////////
+// STATISTICS (COUNTERS)
+////////////////////////
+model Statistic {
+  id    Int    @id @default(autoincrement())
+  label String
+  value Int
+}
+
+////////////////////////
+// WORKFLOW
+////////////////////////
+model WorkflowStep {
+  id          Int    @id @default(autoincrement())
+  stepNumber  Int
+  title       String
+  description String
+}
+
+////////////////////////
+// CAREERS
+////////////////////////
+model Career {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  location    String
+  type        String      // Full-time / Internship
+  isActive    Boolean     @default(true)
+  createdAt   DateTime    @default(now())
 }
