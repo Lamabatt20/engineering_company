@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 import logo from "../assets/images/logo-placeholder.jpg";
-import globeIcon from "../assets/icons/icons8-global-language-50.png";
+import globeIcon from "../assets/icons/icons8-global-language-50 (1).png";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
