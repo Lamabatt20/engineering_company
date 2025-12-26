@@ -1,82 +1,30 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
-import ReactGA from "react-ga4";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Navbar from "./Components/Navbar";
 
-import Home from "./Pages/Home";  
-import Shop from "./Pages/Shop";  
+// Pages
+import Home from "./Pages/Home";
+import About from "./Pages/About";
+import Mechanical from "./Pages/Mechanical";
+import Embedded from "./Pages/Embedded";
+import Careers from "./Pages/Careers";
 import Contact from "./Pages/Contact";
-import ProductDetails from "./Components/ProductDetails";
-import Signup from "./Pages/Signup";
-import Verify from "./Pages/Verfiy";
-import Login from "./Pages/Login";
-import Cart from "./Pages/Cart";
-import EmptyCart from "./Pages/EmptyCart";
-import Profile from "./Pages/Orders";
-import Checkout from "./Pages/Checkout";
 
-import Dashboard from "./Pages/admin/Dashboard";
-import Orders from "./Pages/admin/Orders/Orders";
-import Products from "./Pages/admin/Products/Products";
-import Customers from "./Pages/admin/Customers/Customers";
-import OrderDetails from "./Pages/admin/Orders/OrderDetails";
-import CustomersDetails from "./Pages/admin/Customers/CustomerDetails";
-import ProductsDetails from "./Pages/admin/Products/ProductDetails";
-import AddProducts from "./Pages/admin/Products/AddProduct";
-
-
-ReactGA.initialize("G-1S8F54N0HD");
-
-function AppContent() {
-  const location = useLocation();
-
-  
-  useEffect(() => {
-    ReactGA.send({ hitType: "pageview", page: location.pathname + location.search });
-  }, [location]);
-
-  const noNavbarPrefixes = ["/dashboard", "/orders", "/customers", "/products"];
-  const hideNavbar = noNavbarPrefixes.some(
-    prefix =>
-      location.pathname === prefix || location.pathname.startsWith(prefix + "/")
-  );
-
+function App() {
   return (
-    <>
-      {!hideNavbar && <Navbar />}
+    <Router>
+      <Navbar />
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/shop" element={<Shop />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/mechanical" element={<Mechanical />} />
+        <Route path="/embedded" element={<Embedded />} />
+        <Route path="/careers" element={<Careers />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/product/:id" element={<ProductDetails />} />
-        <Route path="/siginup" element={<Signup />} />
-        <Route path="/verify" element={<Verify />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/EmptyCart" element={<EmptyCart />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/checkout" element={<Checkout />} />
-
-        {/* Admin */}
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/orders" element={<Orders />} />
-        <Route path="/orders/:id" element={<OrderDetails />} />
-        <Route path="/customers" element={<Customers />} />
-        <Route path="/customers/:id" element={<CustomersDetails />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/products/:id" element={<ProductsDetails />} />
-        <Route path="/products/add" element={<AddProducts />} />
       </Routes>
-    </>
-  );
-}
-
-export default function App() {
-  return (
-    <Router>
-      <AppContent />
     </Router>
   );
 }
+
+export default App;
