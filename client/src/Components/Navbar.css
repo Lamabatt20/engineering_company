@@ -109,6 +109,24 @@
   }
 }
 
+/* On small screens make the Contact item appear like other sidebar links (not a rounded button) */
+@media (max-width: 768px) {
+  .sidebar .contact-btn {
+    display: block;
+    background: transparent;
+    padding: 15px 25px;
+    border-radius: 0;
+    font-weight: 600;
+    color: #FFFFFF;
+    text-decoration: none;
+  }
+
+  .sidebar .contact-btn:hover {
+    background: #ED985F;
+    color: #001F3D;
+  }
+}
+
 .sidebar {
   position: fixed;
   top: 0;
