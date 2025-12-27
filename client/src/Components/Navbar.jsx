@@ -31,7 +31,7 @@ function Navbar() {
           <li><Link to="/mechanical">Mechanical Designs</Link></li>
           <li><Link to="/embedded">Embedded Designs</Link></li>
           <li><Link to="/careers">Careers</Link></li>
-          <li><Link to="/contact">Contact Us</Link></li>
+          <li><Link to="/contact" className="contact-btn">Contact Us</Link></li>
         </ul>
 
         {/* Language */}
@@ -62,7 +62,7 @@ function Navbar() {
           <li><Link to="/mechanical" onClick={() => setMenuOpen(false)}>Mechanical Designs</Link></li>
           <li><Link to="/embedded" onClick={() => setMenuOpen(false)}>Embedded Designs</Link></li>
           <li><Link to="/careers" onClick={() => setMenuOpen(false)}>Careers</Link></li>
-          <li><Link to="/contact" onClick={() => setMenuOpen(false)}>Contact Us</Link></li>
+          <li><Link to="/contact" className="contact-btn" onClick={() => setMenuOpen(false)}>Contact Us</Link></li>
         </ul>
       </aside>
     </>

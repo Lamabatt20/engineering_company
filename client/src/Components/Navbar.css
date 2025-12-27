@@ -34,6 +34,21 @@
   color: #ED985F;
 }
 
+/* Contact button in navbar */
+.contact-btn {
+  display: inline-block;
+  background: #ED985F;
+  color: #FFFFFF;
+  padding: 8px 16px;
+  border-radius: 24px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.contact-btn:hover {
+  filter: brightness(0.95);
+}
+
 
 .language-selector {
   display: flex;
@@ -53,6 +68,11 @@
   border: none;
   color: #FFFFFF;
   cursor: pointer;
+}
+
+/* make dropdown options readable (dark on light) */
+.language-selector select option {
+  color: #001F3D;
 }
 
 
