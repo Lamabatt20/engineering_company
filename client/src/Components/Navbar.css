@@ -110,7 +110,7 @@
 }
 
 /* On small screens make the Contact item appear like other sidebar links (not a rounded button) */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .sidebar .contact-btn {
     display: block;
     background: transparent;
