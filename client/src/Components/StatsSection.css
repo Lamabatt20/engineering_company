@@ -1,0 +1,154 @@
+.stats {
+  position: relative;
+  background-color: #001f3d;
+  color: #ffffff;
+
+
+  margin-top: -140px;
+
+
+  padding: 140px 80px 160px;
+
+  overflow: hidden;
+  z-index: 2;
+
+  clip-path: polygon(
+    0 3%,
+    10% 2%,
+    25% 3%,
+    40% 2%,
+    55% 3%,
+    70% 2%,
+    85% 3%,
+    100% 2%,
+    100% 100%,
+    0 100%
+  );
+}
+
+
+.stats::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background-color: #e6e6e6;
+  z-index: 0;
+}
+
+.stats-title {
+  position: relative;
+  z-index: 2;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 70px;
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.stats-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 40px;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 46px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #ffffff;
+}
+
+.stat-label {
+  font-size: 16px;
+  color: #f7b980;
+  letter-spacing: 0.4px;
+}
+.stat-item {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.6s ease;
+}
+
+.stat-item.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stat-icon {
+  font-size: 34px;
+  color: #ed985f;
+  margin-bottom: 18px;
+  transition: 0.3s ease;
+}
+
+.stat-item:hover .stat-icon {
+  color: #f7b980;
+  transform: translateY(-4px);
+}
+
+.stat-number {
+  font-size: 46px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #ffffff;
+}
+
+.stat-label {
+  font-size: 16px;
+  color: #f7b980;
+  letter-spacing: 0.4px;
+}
+
+
+.stat-item:hover {
+  text-shadow: 0 0 14px rgba(247, 185, 128, 0.25);
+}
+
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 60px;
+  }
+}
+
+@media (max-width: 700px) {
+  .stats {
+    margin-top: -100px;
+    padding: 120px 20px 120px;
+
+    clip-path: polygon(
+      0 4%,
+      25% 3%,
+      50% 4%,
+      75% 3%,
+      100% 4%,
+      100% 100%,
+      0 100%
+    );
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-title {
+    font-size: 30px;
+    margin-bottom: 60px;
+  }
+
+  .stat-number {
+    font-size: 40px;
+  }
+}

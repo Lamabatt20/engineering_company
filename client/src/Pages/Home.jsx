@@ -1,9 +1,14 @@
-import React from "react";
+import HeroSection from "../Components/HeroSection";
+import AboutSection from "../Components/AboutSection";
+import StatsSection from "../Components/StatsSection";
 
 function Home() {
   return (
-    <div style={{ padding: "100px 40px" }}>
-    </div>
+    <>
+      <HeroSection />
+      <AboutSection />
+      <StatsSection />
+    </>
   );
 }
 
