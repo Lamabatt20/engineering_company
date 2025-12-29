@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   min-height: calc(100vh - 70px);
-  padding: 60px 80px 120px;
+  padding: 180px 80px 120px;
   display: flex;
   align-items: flex-start;
   color: #e6e6e6;
@@ -86,6 +86,7 @@
 .btn.secondary {
   border: 2px solid #ed985f;
   color: #ed985f;
+  background: transparent; 
 }
 
 .btn.secondary:hover {
@@ -110,7 +111,7 @@
 
 @media (max-width: 900px) {
   .hero {
-    padding: 40px 20px 80px;
+    padding: 130px 20px 80px;
     text-align: center;
   }
 

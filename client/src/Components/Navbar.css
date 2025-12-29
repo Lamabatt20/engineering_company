@@ -1,8 +1,9 @@
 
 .navbar {
-  position: sticky;
+  position: fixed;    
   top: 0;
   height: 70px;
+  width: 100%;
   background-color: #001F3D;
   display: flex;
   align-items: center;
@@ -34,7 +35,7 @@
   color: #ED985F;
 }
 
-/* Contact button in navbar */
+
 .contact-btn {
   display: inline-block;
   background: #ED985F;
@@ -57,6 +58,8 @@
   border: 1px solid #FFFFFF;
   border-radius: 20px;
   padding: 4px 10px;
+  margin-right: 90px;
+  
 }
 
 .language-selector img {
@@ -70,7 +73,7 @@
   cursor: pointer;
 }
 
-/* make dropdown options readable (dark on light) */
+
 .language-selector select option {
   color: #001F3D;
 }
@@ -104,12 +107,12 @@
 
   .navbar-logo {
     position: absolute;
-    left: 50%;
+    left: 45%;
     transform: translateX(-50%);
   }
 }
 
-/* On small screens make the Contact item appear like other sidebar links (not a rounded button) */
+
 @media (max-width: 900px) {
   .sidebar .contact-btn {
     display: block;
@@ -125,6 +128,11 @@
     background: #ED985F;
     color: #001F3D;
   }
+  .language-selector {
+  
+  margin-right: 40px;
+  
+}
 }
 
 .sidebar {

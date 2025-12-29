@@ -36,9 +36,21 @@ function HeroSection() {
           businesses across the globe — from concept to production.
         </h2>
 
-        <Link to="/projects" className="btn secondary">
+        
+        <button
+          className="btn secondary"
+          onClick={() => {
+            const section = document.getElementById("projects");
+            if (section) {
+              section.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+          }}
+        >
           Our Projects
-        </Link>
+        </button>
       </div>
     </section>
   );

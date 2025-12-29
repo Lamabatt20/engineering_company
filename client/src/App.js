@@ -12,16 +12,19 @@ import Contact from "./Pages/Contact";
 function App() {
   return (
     <Router>
-      <Navbar />
+      
+      <div className="app-wrapper">
+        <Navbar />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/mechanical" element={<Mechanical />} />
-        <Route path="/embedded" element={<Embedded />} />
-        <Route path="/careers" element={<Careers />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/mechanical" element={<Mechanical />} />
+          <Route path="/embedded" element={<Embedded />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </div>
     </Router>
   );
 }
