@@ -84,16 +84,18 @@ app.get("/projects", async (req, res) => {
 });
 
 // CREATE project (form-data + images)
-app.post("/projects", upload.array("images", 5), async (req, res) => {
+app.post("/projects", upload.array("images", 30), async (req, res) => {
   try {
-    const { title, shortDesc, description } = req.body;
-
-    if (!title || !shortDesc || !description) {
-      return res.status(400).json({ error: "Missing required fields" });
-    }
+    const {
+      title,
+      shortDesc,
+      description,
+      isEmbedded,
+      isMechanical,
+    } = req.body;
 
     const imagesData = req.files.map((file) => ({
-      imageUrl: `/uploads/${file.filename}`, // 👈 يُحفظ هيك بالـ DB
+      imageUrl: `/uploads/${file.filename}`,
     }));
 
     const project = await prisma.project.create({
@@ -101,6 +103,8 @@ app.post("/projects", upload.array("images", 5), async (req, res) => {
         title,
         shortDesc,
         description,
+        isEmbedded: isEmbedded === "true",
+        isMechanical: isMechanical === "true",
         images: {
           create: imagesData,
         },
@@ -110,7 +114,6 @@ app.post("/projects", upload.array("images", 5), async (req, res) => {
 
     res.status(201).json(project);
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: "Failed to create project" });
   }
 });
@@ -126,7 +129,7 @@ app.post(
         return res.status(400).json({ error: "No image uploaded" });
       }
 
-      // تأكد أن المشروع موجود
+     
       const project = await prisma.project.findUnique({
         where: { id: projectId },
       });
@@ -135,7 +138,7 @@ app.post(
         return res.status(404).json({ error: "Project not found" });
       }
 
-      // حفظ الصورة في ProjectImage
+     
       const image = await prisma.projectImage.create({
         data: {
           imageUrl: `/uploads/${req.file.filename}`,
@@ -153,6 +156,34 @@ app.post(
     }
   }
 );
+app.get("/projects/embedded", async (req, res) => {
+  const projects = await prisma.project.findMany({
+    where: { isEmbedded: true },
+    include: { images: true },
+  });
+  res.json(projects);
+});
+
+
+app.get("/projects/mechanical", async (req, res) => {
+  const projects = await prisma.project.findMany({
+    where: { isMechanical: true },
+    include: { images: true },
+  });
+  res.json(projects);
+});
+
+
+app.get("/projects/general", async (req, res) => {
+  const projects = await prisma.project.findMany({
+    where: {
+      isEmbedded: false,
+      isMechanical: false,
+    },
+    include: { images: true },
+  });
+  res.json(projects);
+});
 
 
 /* ================= PARTNERS ================= */

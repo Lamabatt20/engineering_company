@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
-import logo from "../assets/images/logo-placeholder.jpg";
+import logo from "../assets/images/logob.png";
 import globeIcon from "../assets/icons/icons8-global-language-50 (1).png";
 
 function Navbar() {

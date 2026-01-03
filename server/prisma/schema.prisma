@@ -30,6 +30,10 @@ model Project {
   title       String
   shortDesc   String
   description String
+
+  isEmbedded   Boolean        @default(false)
+  isMechanical Boolean        @default(false)
+
   images      ProjectImage[]
   createdAt   DateTime       @default(now())
 }

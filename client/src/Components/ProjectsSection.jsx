@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getProjects } from "../api";
+import { getGeneralProjects } from "../api";
 import ProjectModal from "./ProjectModal";
 import "./ProjectsSection.css";
 
@@ -11,7 +11,7 @@ export default function ProjectsSection() {
 
   useEffect(() => {
     const fetchProjects = async () => {
-      const data = await getProjects();
+      const data = await getGeneralProjects();
       if (!data?.error) {
         setProjects(data);
       }

@@ -1,11 +1,12 @@
 .about {
   position: relative;
   background-color: #e6e6e6;
-  color: #001f3d;
+  color: #17477b;
   margin-top: -160px;
   padding: 260px 80px 180px;
   overflow: hidden;
   z-index: 3;
+  font-family: "Times New Roman", Times, serif;
 
   clip-path: polygon(
     0 0,
@@ -28,7 +29,7 @@
   left: 0;
   right: 0;
   height: 300px;
-  background-color: #001f3d;
+  background-color: #17477b;
   z-index: 0;
 }
 
@@ -88,7 +89,7 @@
   font-size: 44px;
   font-weight: 700;
   margin-bottom: 34px;
-  color: #001f3d;
+  color: #17477b;
 }
 
 .about-text {
@@ -97,7 +98,7 @@
   line-height: 1.95;
   margin-bottom: 26px;
   max-width: 720px;
-  color: #001f3d;
+  color: #17477b;
 }
 
 .about-image {

@@ -4,7 +4,6 @@ const API = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
 });
 
-
 // ================= COMPANY =================
 export const getCompanyInfo = async () => {
   try {
@@ -14,7 +13,6 @@ export const getCompanyInfo = async () => {
     return { error: error.message };
   }
 };
-
 
 // ================= SERVICES =================
 export const getServices = async () => {
@@ -26,8 +24,9 @@ export const getServices = async () => {
   }
 };
 
-
 // ================= PROJECTS =================
+
+// كل المشاريع (لو احتجتيهم)
 export const getProjects = async () => {
   try {
     const res = await API.get("/projects");
@@ -37,15 +36,35 @@ export const getProjects = async () => {
   }
 };
 
-export const getProjectsByService = async (serviceId) => {
+// Main page projects (embedded=false & mechanical=false)
+export const getGeneralProjects = async () => {
   try {
-    const res = await API.get(`/projects/service/${serviceId}`);
+    const res = await API.get("/projects/general");
     return res.data;
   } catch (error) {
     return { error: error.message };
   }
 };
 
+// Embedded projects
+export const getEmbeddedProjects = async () => {
+  try {
+    const res = await API.get("/projects/embedded");
+    return res.data;
+  } catch (error) {
+    return { error: error.message };
+  }
+};
+
+// Mechanical projects
+export const getMechanicalProjects = async () => {
+  try {
+    const res = await API.get("/projects/mechanical");
+    return res.data;
+  } catch (error) {
+    return { error: error.message };
+  }
+};
 
 // ================= PARTNERS =================
 export const getPartners = async () => {
@@ -57,7 +76,6 @@ export const getPartners = async () => {
   }
 };
 
-
 // ================= STATISTICS =================
 export const getStatistics = async () => {
   try {
@@ -67,7 +85,6 @@ export const getStatistics = async () => {
     return { error: error.message };
   }
 };
-
 
 // ================= WORKFLOW =================
 export const getWorkflowSteps = async () => {
@@ -79,7 +96,6 @@ export const getWorkflowSteps = async () => {
   }
 };
 
-
 // ================= CAREERS =================
 export const getCareers = async () => {
   try {
@@ -89,6 +105,5 @@ export const getCareers = async () => {
     return { error: error.message };
   }
 };
-
 
 export default API;

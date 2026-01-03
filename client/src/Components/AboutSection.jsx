@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import "./AboutSection.css";
-import aboutImage from "../assets/images/PCB-Designing1.jpg";
+import aboutImage from "../assets/images/images.png";
 
 function AboutSection() {
   const contentRef = useRef(null);
